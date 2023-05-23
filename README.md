@@ -1,3 +1,4 @@
+![alt text]( https://github.com/Saeedam02/Saeedam02/blob/main/Banner.gif)
 <h1 align="center">Hi 👋, I'm Saeed Aghamohammadi</h1>
 <h3 align="center">A passionate Control-Science Engineer</h3>
 
