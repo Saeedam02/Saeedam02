@@ -1,6 +1,6 @@
-<h1 align="center">Hi 👋, I'm Saeed Aghamohammadi</h1>
-![alt text]( https://github.com/Saeedam02/Saeedam02/blob/main/Banner.gif)
 
+![alt text]( https://github.com/Saeedam02/Saeedam02/blob/main/Banner.gif)
+<h1 align="center">Hi 👋, I'm Saeed Aghamohammadi</h1>
 <h3 align="center">A passionate Control-Science Engineer</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=saeedam02&label=Profile%20views&color=0e75b6&style=flat" alt="saeedam02" /> </p>
