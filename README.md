@@ -1,18 +1,19 @@
-![alt text]( https://github.com/Saeedam02/Saeedam02/blob/main/Banner.gif)
 <h1 align="center">Hi 👋, I'm Saeed Aghamohammadi</h1>
+![alt text]( https://github.com/Saeedam02/Saeedam02/blob/main/Banner.gif)
+
 <h3 align="center">A passionate Control-Science Engineer</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=saeedam02&label=Profile%20views&color=0e75b6&style=flat" alt="saeedam02" /> </p>
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=saeedam02" alt="saeedam02" /></a> </p>
 
-- 🔭 I’m currently working on **stock predicting and blockchain.**
+- 🔭 I’m currently working on **stock predicting, blockchain, and smart contracts.**
 
-- 🌱 I’m currently learning **python, machine learning ,C++ and attack defense.**
+- 🌱 I’m currently learning **python, machine learning ,C++ and Solidity.**
 
 - 👨‍💻 All of my projects are available at [https://github.com/Saeedam02](https://github.com/Saeedam02)
 
-- 💬 Ask me about **MATLAB , English, Sensors**
+- 💬 Ask me about **MATLAB , Python, Solidity**
 
 - 📫 How to reach me **Saeed008190@gmail.com**
 
