@@ -43,8 +43,8 @@
 
 </div>
 
-
+<!-- Github Stats -->
 <div>
-  <img width="45%" align="left" src="https://github-readme-stats.vercel.app/api/top-langs/?username=saeedam02&theme=vue-dark&show_icons=true&locale=en&layout=compact&hide_border=true" alt="saeedam02" />
-  <img width="50%"  src="https://github-readme-streak-stats.herokuapp.com/?user=saeedam02&theme=vue-dark&hide_border=true" alt="saeedam02" />
+  <img width="41%" align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=smhamidi&theme=vue-dark&show_icons=true&locale=en&layout=compact&hide_border=true" alt="smhamidi most used languages" />
+  <img width="57%" align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=smhamidi&theme=vue-dark&hide_border=true" alt="smhamidi contributions" />
 </div>
