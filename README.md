@@ -1,5 +1,5 @@
 <h1 align="center">Hi 👋, I'm Saeed Aghamohammadi</h1>
-<p align="center"><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=A+Control-Science+Engineer+;++++++++++++++Web+3+Developer+;I'm+a+programming+lover;Eager+to+collaborate+with+you+" alt="Typing SVG" /></a>
+<p align="center"><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=A+Control-Science+Engineer+;++++++++++++++Web+3+Researcher+;I'm+a+programming+lover;Eager+to+collaborate+with+you+" alt="Typing SVG" /></a>
 <picture><img src = "https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/about_me.gif" width = 50px></picture> 
 
 
