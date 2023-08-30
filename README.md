@@ -34,6 +34,10 @@
 <a href="https://soliditylang.org/"> <img src="./images/Languages-Tools-images/Solidity.svg" alt="Solidity" width="40" height="40"/> </a>
 <!-- python -->
 <a href="https://www.python.org" target="_blank"> <img src="./images/Languages-Tools-images/Python.png" alt="Python" width="40" height="40"/> </a>
+<!-- CSS -->
+<a href="https://www.w3schools.com/css/" target="_blank"> <img src="./images/Languages-Tools-images/CSS.png" alt="CSS" width="40" height="40"/> </a>
+<!-- HTML -->
+<a href="https://www.w3schools.com/html/" target="_blank"> <img src="./images/Languages-Tools-images/HTML.png" alt="HTML" width="40" height="40"/> </a>
 <!-- Matalb -->
 <a href="https://www.mathworks.com/" target="_blank"> <img src="./images/Languages-Tools-images/Matlab.png" alt="MATLAB" width="40" height="40"/> </a>
 <!-- Git -->
