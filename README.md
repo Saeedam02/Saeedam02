@@ -5,7 +5,7 @@
 
 - 🔭 I’m currently working on **stock predicting, blockchain, and smart contracts.**
 
-- 🌱 I’m currently learning **Python, machine learning, CSS, HTML, and Solidity.**
+- 🌱 I’m currently learning **Python, machine learning and Solidity.**
 
 - 👨‍💻 All of my projects are available at [https://github.com/Saeedam02](https://github.com/Saeedam02)
 
