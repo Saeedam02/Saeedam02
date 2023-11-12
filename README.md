@@ -3,9 +3,9 @@
 <picture><img src = "https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/about_me.gif" width = 50px></picture> 
 
 
-- 🔭 I’m currently working on **blockchain and smart contracts.**
+- 🔭 I’m currently working on **blockchain and Smart contracts.**
 
-- 🌱 I’m currently learning **Python and Solidity.**
+- 🌱 I’m currently learning **C++ and Solidity.**
 
 - 👨‍💻 All of my projects are available at [https://github.com/Saeedam02](https://github.com/Saeedam02)
 
