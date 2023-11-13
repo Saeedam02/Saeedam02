@@ -34,6 +34,8 @@
 <a href="https://soliditylang.org/"> <img src="./images/Languages-Tools-images/Solidity.svg" alt="Solidity" width="40" height="40"/> </a>
 <!-- python -->
 <a href="https://www.python.org" target="_blank"> <img src="./images/Languages-Tools-images/Python.png" alt="Python" width="40" height="40"/> </a>
+<!-- CPP -->
+<a href="https://www.w3schools.com/cpp/" target="_blank"> <img src="./images/Languages-Tools-images/CPP.png" alt="CPP" width="40" height="40"/> </a>
 <!-- CSS -->
 <a href="https://www.w3schools.com/css/" target="_blank"> <img src="./images/Languages-Tools-images/CSS.png" alt="CSS" width="40" height="40"/> </a>
 <!-- HTML -->
