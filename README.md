@@ -7,8 +7,6 @@
 
 - 🌱 I’m currently learning **C++ and Solidity.**
 
-- 👨‍💻 All of my projects are available at [https://github.com/Saeedam02](https://github.com/Saeedam02)
-
 - 💬 Ask me about **Blockchain, Solidity, Python, Matlab**
 
 <h3 align="left">You Can Reach Me VIA:</h3>
