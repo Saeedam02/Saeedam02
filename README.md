@@ -1,14 +1,14 @@
 <h1 align="center">Hi 👋, I'm Saeed Aghamohammadi</h1>
-<p align="center"><a href ="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=Eager+to+collaborate+with+you+;++++++++++++++Web+3+Researcher+;I'm+a+programming+lover;A+Control-Science+Engineer+" alt="Typing SVG" /></a>
+<p align="center"><a href ="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=Eager+to+collaborate+with+you+;++++++++++++++AI and Web3+Researcher+;I'm+a+programming+lover;A+Control-Science+Engineer+" alt="Typing SVG" /></a>
 <div align="center">
   <img src="Banner2.gif" alt="Banner Image" />
 </div>
 
-- 🔭 I’m currently working on **blockchain and Smart contracts.**
+- 🔭 I’m currently working on **AI,Blockchain and Smart contracts.**
 
-- 🌱 I’m currently learning **C++ and Solidity.**
+- 🌱 I’m currently learning **ML and Solidity.**
 
-- 💬 Ask me about **Blockchain, Solidity, Python, Matlab**
+- 💬 Ask me about **Blockchain, Autonomous Vehicles, Python, Cyber-Attacks**
 
 <h3 align="left">You Can Reach Me VIA:</h3>
 <p align="left">
