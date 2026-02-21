@@ -1,5 +1,6 @@
 <h1 align="center">Hi 👋, I'm Saeed Aghamohammadi</h1>
 <p align="center"><a href ="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=Eager+to+collaborate+with+you+;++++++++++++++AI and Web3+Researcher+;I'm+a+programming+lover;A+Control-Science+Engineer+" alt="Typing SVG" /></a>
+  
 <div align="center">
   <img src="Banner2.gif" alt="Banner Image" />
 </div>
@@ -8,11 +9,11 @@
 
 - 🌱 I’m currently learning **ML and Solidity.**
 
-- 💬 Ask me about **Blockchain, Autonomous Vehicles, Python, Cyber-Attacks**
+- 💬 Ask me about **Autonomous Vehicles,Blockchain, Python, Cyber-Attacks**
 
 <h3 align="left">You Can Reach Me VIA:</h3>
 <p align="left">
-<a href="mailto:Saeed008190@gmail.com" target="blank"><img align="center" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Saeed008190@gmail.com" height="35" width="35" /></a>
+<a href="mailto:Saeedaghamohammadi99@gmail.com" target="blank"><img align="center" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Saeed008190@gmail.com" height="35" width="35" /></a>
 <a href="https://t.me/saeed_am02" target="blank"><img align="center" src="https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg" alt="saeed_am02" height="35" width="35" /></a>
 </p>
 
@@ -20,6 +21,18 @@
 <p align="left">
 <a href="https://twitter.com/saeed_am02" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="saeed_am02" height="30" width="40" /></a>
 <a href="https://instagram.com/saeed_aghamohammadi_" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="saeed_aghamohammadi_" height="30" width="40" /></a>
+<h3 align="left">Connect with me:</h3>
+<p align="left">
+  <a href="https://twitter.com/saeed_am02" target="blank">
+    <img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="saeed_am02" height="30" width="40" />
+  </a>
+  <a href="https://instagram.com/saeed_aghamohammadi_" target="blank">
+    <img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="saeed_aghamohammadi_" height="30" width="40" />
+  </a>
+  <a href="https://www.linkedin.com/in/saeedaghamohammadi/" target="blank">
+    <img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linkedin.svg" alt="Saeed Aghamohammadi" height="30" width="40" />
+  </a>
+</p>
 </p>
 
 <!-- Tools and Languages -->
