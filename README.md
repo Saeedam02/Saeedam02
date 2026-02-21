@@ -4,7 +4,7 @@
   <img src="Banner2.gif" alt="Banner Image" />
 </div>
 
-- 🔭 I’m currently working on **AI,Blockchain and Smart contracts.**
+- 🔭 I’m currently working on **Autonomous Vehicles,AI,Blockchain.**
 
 - 🌱 I’m currently learning **ML and Solidity.**
 
