@@ -6,9 +6,9 @@
   <img src="Banner2.gif" alt="Banner Image" />
 </div>
 
-- 🔭 I’m currently working on **Autonomous Vehicles,AI,Blockchain.**
+- 🔭 I’m currently working on **Autonomous Vehicles,AI,Control Science and Blockchain-Enbeded networks.**
 
-- 🌱 I’m currently learning **ML and Solidity.**
+- 🌱 I’m currently learning **ML and Docker.**
 
 - 💬 Ask me about **Autonomous Vehicles,Blockchain, Python, Cyber-Attacks**
 
