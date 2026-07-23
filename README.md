@@ -1,16 +1,30 @@
 <h1 align="center">Hi 👋, I'm Saeed Aghamohammadi</h1>
+
+<h3 align="center">Control Systems Engineer | Autonomous Vehicles & Automated Systems</h3>
+
 <div align="center">
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=Eager+to+collaborate+with+you;AI+and+Web3+Researcher;I'm+a+programming+lover;A+Control-Science+Engineer" alt="Typing SVG" />
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=600&lines=MSc+Control+Engineering%2C+Amirkabir+University;MIMO+Systems+%26+Autonomous+Vehicle+Control;Blockchain-Enabled+Cyber-Secure+Systems;Embedded+C%2B%2B+%2B+MATLAB%2FSimulink;Open+to+PhD+%2F+Research+Collaboration" alt="Typing SVG" />
+
 </div>
+
 <div align="center">
   <img src="Banner2.gif" alt="Banner Image" />
 </div>
 
-- 🔭 I’m currently working on **Autonomous Vehicles,AI,Control Science and Blockchain-Enbeded networks.**
+---
 
-- 🌱 I’m currently learning **ML and Docker.**
+### 🔬 Research Focus
 
-- 💬 Ask me about **Autonomous Vehicles,Blockchain, Python, Cyber-Attacks**
+I work on **control theory and automated systems**, with a particular interest in **autonomous vehicles** — from MIMO control design to embedded implementation. My MSc research (Amirkabir University of Technology) centered on multi-input multi-output control systems, and I build on that with hands-on work in MATLAB/Simulink modeling and embedded C++ for real-time control applications.
+
+- 🎓 **MSc, Control Systems Engineering** — Amirkabir University of Technology
+- 🔭 Currently working on **autonomous vehicle control, MIMO systems, and automated/embedded control systems**
+- 🌱 Currently deepening my skills in **ML and Docker**
+- 💬 Ask me about **autonomous vehicles, MIMO control, MATLAB/Simulink, embedded C++**
+- 🎯 Open to **PhD positions and research collaborations** in control systems and autonomous/automated vehicle systems
+
+---
 
 <h3 align="left">You Can Reach Me VIA:</h3>
 <p align="left">
@@ -26,30 +40,18 @@
   <img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="saeedaghamohammadi" height="30" width="40" />
 </a>
 </p>
-<!-- Tools and Languages -->
+
 <h3 align="left">Languages and Tools:</h3>
 <div align="left">
-<!-- OS -->
-<!-- linux -->
 <a href="https://www.linux.org/" target="_blank"> <img src="./images/Languages-Tools-images/Linux.svg" alt="Linux" width="40" height="40"/> </a>
-<!-- Languages -->
-<!-- Solidity -->
 <a href="https://soliditylang.org/"> <img src="./images/Languages-Tools-images/Solidity.svg" alt="Solidity" width="40" height="40"/> </a>
-<!-- python -->
 <a href="https://www.python.org" target="_blank"> <img src="./images/Languages-Tools-images/Python.png" alt="Python" width="40" height="40"/> </a>
-<!-- CPP -->
 <a href="https://www.w3schools.com/cpp/" target="_blank"> <img src="./images/Languages-Tools-images/CPP.png" alt="CPP" width="40" height="40"/> </a>
-<!-- CSS -->
 <a href="https://www.w3schools.com/css/" target="_blank"> <img src="./images/Languages-Tools-images/CSS.png" alt="CSS" width="40" height="40"/> </a>
-<!-- HTML -->
 <a href="https://www.w3schools.com/html/" target="_blank"> <img src="./images/Languages-Tools-images/HTML.png" alt="HTML" width="40" height="40"/> </a>
-<!-- Matalb -->
 <a href="https://www.mathworks.com/" target="_blank"> <img src="./images/Languages-Tools-images/Matlab.png" alt="MATLAB" width="40" height="40"/> </a>
-<!-- Git -->
 <a href="https://git-scm.com/" target="_blank"> <img src="./images/Languages-Tools-images/Git.png" alt="Git" width="40" height="40"/></a>
-<!-- Foundry -->
 <a href="https://getfoundry.sh/"> <img src="./images/Languages-Tools-images/Foundry.png" alt="Foundry" width="40" height="40"/> </a>
-
 </div>
 
 <!-- Github Stats -->
