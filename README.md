@@ -16,7 +16,7 @@
 
 ### 🔬 Research Focus
 
-I work on **control theory and automated systems**, with a particular interest in **autonomous vehicles** — from MIMO control design to embedded implementation. My MSc research (Amirkabir University of Technology) centered on multi-input multi-output control systems, and I build on that with hands-on work in MATLAB/Simulink modeling and embedded C++ for real-time control applications.
+I work on **control theory and automated systems**, with a particular interest in **autonomous vehicles** — from MIMO control design to embedded implementation. My MSc research (Amirkabir University of Technology) centered on multi-input multi-output control systems, and I build on that with hands-on work in Python, MATLAB/Simulink modeling and embedded C++ for real-time control applications.
 
 - 🎓 **MSc, Control Systems Engineering** — Amirkabir University of Technology
 - 🔭 Currently working on **autonomous vehicle control, MIMO systems, and automated/embedded control systems**
