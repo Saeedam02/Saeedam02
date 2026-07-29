@@ -4,8 +4,11 @@
 
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=600&lines=MSc+Control+Engineering%2C+Amirkabir+University;MIMO+Systems+%26+Autonomous+Vehicle+Control;Blockchain-Enabled+Cyber-Secure+Systems;Embedded+C%2B%2B+%2B+MATLAB%2FSimulink;Open+to+PhD+%2F+Research+Collaboration" alt="Typing SVG" />
-
+<img
+  align="center"
+  src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=600&lines=MSc+Control+Engineering%2C+Amirkabir+University;MIMO+Systems+%26+Autonomous+Vehicle+Control;Blockchain-Enabled+Cyber-Secure+Systems;Embedded+C%2B%2B+%2B+MATLAB%2FSimulink;Open+to+PhD+%2F+Research+Collaboration"
+  alt="Typing SVG"
+/>
 </div>
 
 <div align="center">
