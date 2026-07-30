@@ -57,16 +57,17 @@ I work on **control theory and automated systems**, with a particular interest i
 <a href="https://getfoundry.sh/"> <img src="./images/Languages-Tools-images/Foundry.png" alt="Foundry" width="40" height="40"/> </a>
 </div>
 
-<!-- Github Stats -->
+<!-- GitHub Stats -->
 <div align="center">
   <img
-    width="41%"
+    height="195"
+    align="center"
     src="./profile/top-langs.svg"
     alt="Saeed's most used programming languages"
   />
-
   <img
-    width="57%"
+    height="195"
+    align="center"
     src="https://github-readme-streak-stats.herokuapp.com/?user=saeedam02&theme=vue-dark&hide_border=true"
     alt="Saeed's GitHub contribution streak"
   />
