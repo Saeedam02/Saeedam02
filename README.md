@@ -58,7 +58,16 @@ I work on **control theory and automated systems**, with a particular interest i
 </div>
 
 <!-- Github Stats -->
-<div>
-  <img width="41%" align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=saeedam02&theme=vue-dark&show_icons=true&locale=en&layout=compact&hide_border=true" alt="saeedam02 most used languages" />
-  <img width="57%" align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=saeedam02&theme=vue-dark&hide_border=true" alt="saeedam02 contributions" />
+<div align="center">
+  <img
+    width="41%"
+    src="./profile/top-langs.svg"
+    alt="Saeed's most used programming languages"
+  />
+
+  <img
+    width="57%"
+    src="https://github-readme-streak-stats.herokuapp.com/?user=saeedam02&theme=vue-dark&hide_border=true"
+    alt="Saeed's GitHub contribution streak"
+  />
 </div>
