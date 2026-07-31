@@ -29,13 +29,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@v2
         with:
           card: top-langs
-          options: >-
-            username=${{ github.repository_owner }}&
-            theme=vue-dark&
-            layout=compact&
-            langs_count=6&
-            card_width=350&
-            hide_border=true
+          options: "username=${{ github.repository_owner }}&theme=vue-dark&layout=compact&langs_count=6&card_width=350&hide_border=true&bg_color=273849&title_color=41B883&text_color=FFFEFE"
           path: profile/top-langs.svg
           token: ${{ secrets.GITHUB_TOKEN }}
           fail_on_error: true
