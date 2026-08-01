@@ -1,48 +1,289 @@
-name: Update GitHub Profile Stats
+name: Update GitHub Overview Card
 
 on:
   schedule:
+    # Run automatically every day at 03:00 UTC
     - cron: "0 3 * * *"
+
+  # Allow manual execution from the Actions tab
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: update-github-profile-stats
+  group: update-github-overview-card
   cancel-in-progress: true
 
 jobs:
-  generate-stats:
-    name: Generate GitHub Profile Stats
+  generate-overview:
+    name: Generate Combined GitHub Overview
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout profile repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Create profile directory
-        run: mkdir -p profile
+      - name: Create required directories
+        run: mkdir -p profile stats-source
 
-      - name: Generate top languages card
+      # Generate the four most-used languages with a transparent background
+      - name: Generate top languages source card
         uses: stats-organization/github-readme-stats-action@v2
         with:
           card: top-langs
-          options: "username=${{ github.repository_owner }}&theme=vue-dark&layout=compact&langs_count=4&card_width=340&hide_border=true&bg_color=273849&title_color=41B883&text_color=FFFFFF"
-          path: profile/top-langs.svg
+          options: "username=${{ github.repository_owner }}&layout=compact&langs_count=4&card_width=390&hide_border=true&bg_color=00000000&title_color=41B883&text_color=FFFFFF"
+          path: stats-source/top-langs.svg
           token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: true
 
-      - name: Commit updated language card
+      # Download the contribution-streak card with a transparent background
+      - name: Download contribution streak source card
+        shell: bash
+        run: |
+          curl \
+            --fail \
+            --silent \
+            --show-error \
+            --location \
+            --retry 3 \
+            --retry-all-errors \
+            --retry-delay 5 \
+            "https://streak-stats.demolab.com/?user=${GITHUB_REPOSITORY_OWNER}&theme=vue-dark&hide_border=true&background=00000000&card_width=500&card_height=190&ring=41B883&fire=41B883&currStreakNum=41B883&sideNums=41B883&currStreakLabel=41B883&sideLabels=41B883&dates=FFFFFF" \
+            --output stats-source/streak.svg
+
+      # Put both source cards inside one SVG container
+      - name: Build combined GitHub overview card
+        shell: bash
+        run: |
+          python3 <<'PY'
+          from copy import deepcopy
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+
+          SVG_NAMESPACE = "http://www.w3.org/2000/svg"
+          ET.register_namespace("", SVG_NAMESPACE)
+
+          def svg_tag(name: str) -> str:
+              return f"{{{SVG_NAMESPACE}}}{name}"
+
+          def read_svg(path: str):
+              root = ET.parse(path).getroot()
+
+              view_box = root.get("viewBox")
+              if view_box:
+                  return root, view_box
+
+              width = root.get("width", "0").replace("px", "").strip()
+              height = root.get("height", "0").replace("px", "").strip()
+
+              return root, f"0 0 {width} {height}"
+
+          def prefix_element_ids(root, prefix: str) -> None:
+              """
+              Prevent ID conflicts between the two SVG source documents.
+              """
+
+              id_mapping = {}
+
+              for element in root.iter():
+                  old_id = element.get("id")
+
+                  if old_id:
+                      new_id = f"{prefix}-{old_id}"
+                      id_mapping[old_id] = new_id
+                      element.set("id", new_id)
+
+              for element in root.iter():
+                  for attribute, original_value in list(element.attrib.items()):
+                      updated_value = original_value
+
+                      for old_id, new_id in id_mapping.items():
+                          updated_value = updated_value.replace(
+                              f"url(#{old_id})",
+                              f"url(#{new_id})"
+                          )
+
+                          if updated_value == f"#{old_id}":
+                              updated_value = f"#{new_id}"
+
+                          updated_value = updated_value.replace(
+                              f"{old_id}.",
+                              f"{new_id}."
+                          )
+
+                      element.set(attribute, updated_value)
+
+                  if element.tag == svg_tag("style") and element.text:
+                      updated_style = element.text
+
+                      for old_id, new_id in id_mapping.items():
+                          updated_style = updated_style.replace(
+                              f"#{old_id}",
+                              f"#{new_id}"
+                          )
+
+                      element.text = updated_style
+
+          def place_svg(
+              parent,
+              source_root,
+              source_view_box: str,
+              *,
+              x: int,
+              y: int,
+              width: int,
+              height: int
+          ) -> None:
+              nested_svg = ET.SubElement(
+                  parent,
+                  svg_tag("svg"),
+                  {
+                      "x": str(x),
+                      "y": str(y),
+                      "width": str(width),
+                      "height": str(height),
+                      "viewBox": source_view_box,
+                      "preserveAspectRatio": "xMidYMid meet",
+                      "overflow": "hidden",
+                  }
+              )
+
+              # Preserve useful attributes from the original SVG root
+              ignored_attributes = {
+                  "x",
+                  "y",
+                  "width",
+                  "height",
+                  "viewBox",
+                  "preserveAspectRatio",
+              }
+
+              for attribute, value in source_root.attrib.items():
+                  if attribute not in ignored_attributes:
+                      nested_svg.set(attribute, value)
+
+              for child in source_root:
+                  nested_svg.append(deepcopy(child))
+
+          languages_root, languages_view_box = read_svg(
+              "stats-source/top-langs.svg"
+          )
+
+          streak_root, streak_view_box = read_svg(
+              "stats-source/streak.svg"
+          )
+
+          prefix_element_ids(languages_root, "languages")
+          prefix_element_ids(streak_root, "streak")
+
+          card_width = 920
+          card_height = 210
+
+          combined_svg = ET.Element(
+              svg_tag("svg"),
+              {
+                  "width": str(card_width),
+                  "height": str(card_height),
+                  "viewBox": f"0 0 {card_width} {card_height}",
+                  "role": "img",
+                  "aria-labelledby": "overview-title overview-description",
+              }
+          )
+
+          title = ET.SubElement(
+              combined_svg,
+              svg_tag("title"),
+              {"id": "overview-title"}
+          )
+          title.text = "Saeed's GitHub overview"
+
+          description = ET.SubElement(
+              combined_svg,
+              svg_tag("desc"),
+              {"id": "overview-description"}
+          )
+          description.text = (
+              "Most-used programming languages on the left and "
+              "GitHub contribution streak statistics on the right."
+          )
+
+          # One shared background
+          ET.SubElement(
+              combined_svg,
+              svg_tag("rect"),
+              {
+                  "x": "0",
+                  "y": "0",
+                  "width": str(card_width),
+                  "height": str(card_height),
+                  "rx": "8",
+                  "ry": "8",
+                  "fill": "#273849",
+              }
+          )
+
+          # Subtle separator between the two sections
+          ET.SubElement(
+              combined_svg,
+              svg_tag("line"),
+              {
+                  "x1": "410",
+                  "y1": "20",
+                  "x2": "410",
+                  "y2": "190",
+                  "stroke": "#FFFFFF",
+                  "stroke-opacity": "0.22",
+                  "stroke-width": "1",
+              }
+          )
+
+          # Left side: top four languages
+          place_svg(
+              combined_svg,
+              languages_root,
+              languages_view_box,
+              x=10,
+              y=8,
+              width=390,
+              height=194,
+          )
+
+          # Right side: contribution statistics
+          place_svg(
+              combined_svg,
+              streak_root,
+              streak_view_box,
+              x=420,
+              y=8,
+              width=490,
+              height=194,
+          )
+
+          output_path = Path("profile/github-overview.svg")
+          output_path.parent.mkdir(parents=True, exist_ok=True)
+
+          ET.ElementTree(combined_svg).write(
+              output_path,
+              encoding="utf-8",
+              xml_declaration=True
+          )
+
+          print(f"Generated {output_path}")
+          PY
+
+      - name: Commit updated overview card
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add profile/top-langs.svg
+          git add profile/github-overview.svg
 
           if git diff --cached --quiet; then
             echo "No changes detected."
           else
-            git commit -m "Update GitHub language stats"
+            git commit -m "Update combined GitHub overview card"
             git push
           fi
