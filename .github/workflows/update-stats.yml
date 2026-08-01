@@ -2,10 +2,7 @@ name: Update GitHub Profile Stats
 
 on:
   schedule:
-    # Run every day at 03:00 UTC
     - cron: "0 3 * * *"
-
-  # Allow manual execution from the Actions tab
   workflow_dispatch:
 
 permissions:
@@ -31,7 +28,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@v2
         with:
           card: top-langs
-          options: "username=${{ github.repository_owner }}&theme=vue-dark&layout=compact&langs_count=6&card_width=340&hide_border=true&bg_color=273849&title_color=41B883&text_color=FFFFFF"
+          options: "username=${{ github.repository_owner }}&theme=vue-dark&layout=compact&langs_count=4&card_width=340&hide_border=true&bg_color=273849&title_color=41B883&text_color=FFFFFF"
           path: profile/top-langs.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
