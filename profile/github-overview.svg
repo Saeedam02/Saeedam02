@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="210" viewBox="0 0 920 210" role="img" aria-labelledby="overview-title overview-description"><title id="overview-title">Saeed's GitHub overview</title><desc id="overview-description">Most-used programming languages on the left and GitHub contribution streak statistics on the right.</desc><rect x="0" y="0" width="920" height="210" rx="8" ry="8" fill="#273849" /><line x1="410" y1="20" x2="410" y2="190" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="1" /><svg x="10" y="8" width="390" height="194" viewBox="0 0 390 140" preserveAspectRatio="xMidYMid meet" overflow="hidden" fill="none" role="img" aria-labelledby="descId"><title id="languages-titleId" />
+        <desc id="languages-descId" />
+        <style>
+          .header {
+            font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
+            fill: #41B883;
+            animation: fadeInAnimation 0.8s ease-in-out forwards;
+          }
+          @supports(-moz-appearance: auto) {
+            /* Selector detects Firefox */
+            .header { font-size: 15.5px; }
+          }
+          
+    @keyframes slideInAnimation {
+      from {
+        width: 0;
+      }
+      to {
+        width: calc(100%-100px);
+      }
+    }
+    @keyframes growWidthAnimation {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+    .stat {
+      font: 600 14px 'Segoe UI', Ubuntu, "Helvetica Neue", Sans-Serif; fill: #FFFFFF;
+    }
+    @supports(-moz-appearance: auto) {
+      /* Selector detects Firefox */
+      .stat { font-size:12px; }
+    }
+    .bold { font-weight: 700 }
+    .lang-name {
+      font: 400 11px "Segoe UI", Ubuntu, Sans-Serif;
+      fill: #FFFFFF;
+    }
+    .stagger {
+      opacity: 0;
+      animation: fadeInAnimation 0.3s ease-in-out forwards;
+    }
+    #languages-rect-mask rect{
+      animation: slideInAnimation 1s ease-in-out forwards;
+    }
+    .lang-progress{
+      animation: growWidthAnimation 0.6s ease-in-out forwards;
+    }
+    
+
+          
+      /* Animations */
+      @keyframes scaleInAnimation {
+        from {
+          transform: translate(-5px, 5px) scale(0);
+        }
+        to {
+          transform: translate(-5px, 5px) scale(1);
+        }
+      }
+      @keyframes fadeInAnimation {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    
+          
+        </style>
+
+        
+
+        <rect data-testid="card-bg" x="0.5" y="0.5" rx="4.5" height="99%" stroke="#e4e2e2" width="389" fill="#00000000" stroke-opacity="0" />
+
+        
+      <g data-testid="card-title" transform="translate(25, 35)">
+        <g transform="translate(0, 0)">
+      <text x="0" y="0" class="header" data-testid="header">Most Used Languages</text>
+    </g>
+      </g>
+    
+
+        <g data-testid="main-card-body" transform="translate(0, 55)">
+          
+    <svg data-testid="lang-items" x="25">
+      
+  
+      <mask id="languages-rect-mask">
+          <rect x="0" y="0" width="340" height="8" fill="white" rx="5" />
+        </mask>
+        
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="0" y="0" width="157.85" height="8" fill="#3572A5" />
+      
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="157.85" y="0" width="106.02" height="8" fill="#AA6746" />
+      
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="263.87" y="0" width="51.13" height="8" fill="#f34b7d" />
+      
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="315" y="0" width="25" height="8" fill="#e16737" />
+      
+      
+    <g transform="translate(0, 25)">
+      <g transform="translate(0, 0)"><g transform="translate(0, 0)">
+    <g class="stagger" style="animation-delay: 450ms">
+      <circle cx="5" cy="6" r="5" fill="#3572A5" />
+      <text data-testid="lang-name" x="15" y="10" class="lang-name">
+        Python 46.43%
+      </text>
+    </g>
+  </g><g transform="translate(0, 25)">
+    <g class="stagger" style="animation-delay: 600ms">
+      <circle cx="5" cy="6" r="5" fill="#AA6746" />
+      <text data-testid="lang-name" x="15" y="10" class="lang-name">
+        Solidity 31.18%
+      </text>
+    </g>
+  </g></g><g transform="translate(150, 0)"><g transform="translate(0, 0)">
+    <g class="stagger" style="animation-delay: 450ms">
+      <circle cx="5" cy="6" r="5" fill="#f34b7d" />
+      <text data-testid="lang-name" x="15" y="10" class="lang-name">
+        C++ 15.04%
+      </text>
+    </g>
+  </g><g transform="translate(0, 25)">
+    <g class="stagger" style="animation-delay: 600ms">
+      <circle cx="5" cy="6" r="5" fill="#e16737" />
+      <text data-testid="lang-name" x="15" y="10" class="lang-name">
+        MATLAB 7.35%
+      </text>
+    </g>
+  </g></g>
+    </g>
+  
+    </svg>
+  
+        </g>
+      </svg><svg x="420" y="8" width="490" height="194" viewBox="0 0 500 190" preserveAspectRatio="xMidYMid meet" overflow="hidden" style="isolation: isolate" direction="ltr"><style>
+            @keyframes currstreak {
+                0% { font-size: 3px; opacity: 0.2; }
+                80% { font-size: 34px; opacity: 1; }
+                100% { font-size: 28px; opacity: 1; }
+            }
+            @keyframes fadein {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
+            }
+        </style>
+        <defs>
+            <clipPath id="streak-outer_rectangle">
+                <rect width="500" height="190" rx="4.5" />
+            </clipPath>
+            <mask id="streak-mask_out_ring_behind_fire">
+                <rect width="500" height="190" fill="white" />
+                <ellipse id="streak-mask-ellipse" cx="250" cy="32" rx="13" ry="18" fill="black" />
+            </mask>
+            
+        </defs>
+        <g clip-path="url(#streak-outer_rectangle)">
+            <g style="isolation: isolate">
+                <rect stroke="#000000" stroke-opacity="0" fill="#000000" fill-opacity="0" rx="4.5" x="0.5" y="0.5" width="499" height="189" />
+            </g>
+            <g style="isolation: isolate">
+                <line x1="166.66666666667" y1="26.75" x2="166.66666666667" y2="167.5" vector-effect="non-scaling-stroke" stroke-width="1" stroke="#E4E2E2" stroke-linejoin="miter" stroke-linecap="square" stroke-miterlimit="3" />
+                <line x1="333.33333333333" y1="26.75" x2="333.33333333333" y2="167.5" vector-effect="non-scaling-stroke" stroke-width="1" stroke="#E4E2E2" stroke-linejoin="miter" stroke-linecap="square" stroke-miterlimit="3" />
+            </g>
+            <g style="isolation: isolate">
+                
+                <g transform="translate(83.333333333333, 45.5)">
+                    <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#41b883" stroke="none" font-family="&quot;Segoe UI&quot;, Ubuntu, sans-serif" font-weight="700" font-size="28px" font-style="normal" style="opacity: 0; animation: fadein 0.5s linear forwards 0.6s">
+                        752
+                    </text>
+                </g>
+
+                
+                <g transform="translate(83.333333333333, 81.5)">
+                    <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#41b883" stroke="none" font-family="&quot;Segoe UI&quot;, Ubuntu, sans-serif" font-weight="400" font-size="14px" font-style="normal" style="opacity: 0; animation: fadein 0.5s linear forwards 0.7s">
+                        Total Contributions
+                    </text>
+                </g>
+
+                
+                <g transform="translate(83.333333333333, 111.5)">
+                    <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#ffffff" stroke="none" font-family="&quot;Segoe UI&quot;, Ubuntu, sans-serif" font-weight="400" font-size="12px" font-style="normal" style="opacity: 0; animation: fadein 0.5s linear forwards 0.8s">
+                        Nov 19, 2022 - Present
+                    </text>
+                </g>
+            </g>
+            <g style="isolation: isolate">
+                
+                <g transform="translate(250, 105.5)">
+                    <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#41b883" stroke="none" font-family="&quot;Segoe UI&quot;, Ubuntu, sans-serif" font-weight="700" font-size="14px" font-style="normal" style="opacity: 0; animation: fadein 0.5s linear forwards 0.9s">
+                        Current Streak
+                    </text>
+                </g>
+
+                
+                <g transform="translate(250, 142.5)">
+                    <text x="0" y="21" stroke-width="0" text-anchor="middle" fill="#ffffff" stroke="none" font-family="&quot;Segoe UI&quot;, Ubuntu, sans-serif" font-weight="400" font-size="12px" font-style="normal" style="opacity: 0; animation: fadein 0.5s linear forwards 0.9s">
+                        Jul 21 - Aug 1
+                    </text>
+                </g>
+
+                
+                <g mask="url(#streak-mask_out_ring_behind_fire)">
+                    <circle cx="250" cy="68.5" r="40" fill="none" stroke="#41b883" stroke-width="5" style="opacity: 0; animation: fadein 0.5s linear forwards 0.4s" />
+                </g>
+                
+                <g transform="translate(250, 17)" stroke-opacity="0" style="opacity: 0; animation: fadein 0.5s linear forwards 0.6s">
+                    <path d="M -12 -0.5 L 15 -0.5 L 15 23.5 L -12 23.5 L -12 -0.5 Z" fill="none" />
+                    <path d="M 1.5 0.67 C 1.5 0.67 2.24 3.32 2.24 5.47 C 2.24 7.53 0.89 9.2 -1.17 9.2 C -3.23 9.2 -4.79 7.53 -4.79 5.47 L -4.76 5.11 C -6.78 7.51 -8 10.62 -8 13.99 C -8 18.41 -4.42 22 0 22 C 4.42 22 8 18.41 8 13.99 C 8 8.6 5.41 3.79 1.5 0.67 Z M -0.29 19 C -2.07 19 -3.51 17.6 -3.51 15.86 C -3.51 14.24 -2.46 13.1 -0.7 12.74 C 1.07 12.38 2.9 11.53 3.92 10.16 C 4.31 11.45 4.51 12.81 4.51 14.2 C 4.51 16.85 2.36 19 -0.29 19 Z" fill="#41b883" stroke-opacity="0" />
+                </g>
+
+                
+                <g transform="translate(250, 45.5)">
+                    <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#41b883" stroke="none" font-family="&quot;Segoe UI&quot;, Ubuntu, sans-serif" font-weight="700" font-size="28px" font-style="normal" style="animation: currstreak 0.6s linear forwards">
+                        12
+                    </text>
+                </g>
+
+            </g>
+            <g style="isolation: isolate">
+                
+                <g transform="translate(416.66666666667, 45.5)">
+                    <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#41b883" stroke="none" font-family="&quot;Segoe UI&quot;, Ubuntu, sans-serif" font-weight="700" font-size="28px" font-style="normal" style="opacity: 0; animation: fadein 0.5s linear forwards 1.2s">
+                        33
+                    </text>
+                </g>
+
+                
+                <g transform="translate(416.66666666667, 81.5)">
+                    <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#41b883" stroke="none" font-family="&quot;Segoe UI&quot;, Ubuntu, sans-serif" font-weight="400" font-size="14px" font-style="normal" style="opacity: 0; animation: fadein 0.5s linear forwards 1.3s">
+                        Longest Streak
+                    </text>
+                </g>
+
+                
+                <g transform="translate(416.66666666667, 111.5)">
+                    <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#ffffff" stroke="none" font-family="&quot;Segoe UI&quot;, Ubuntu, sans-serif" font-weight="400" font-size="12px" font-style="normal" style="opacity: 0; animation: fadein 0.5s linear forwards 1.4s">
+                        Nov 11, 2023 - Dec 13, 2023
+                    </text>
+                </g>
+            </g>
+            
+        </g>
+    </svg></svg>
