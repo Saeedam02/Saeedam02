@@ -95,13 +95,13 @@
           <rect x="0" y="0" width="340" height="8" fill="white" rx="5" />
         </mask>
         
-        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="0" y="0" width="166.12" height="8" fill="#3572A5" />
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="0" y="0" width="169.06" height="8" fill="#3572A5" />
       
-        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="166.12" y="0" width="101.21" height="8" fill="#AA6746" />
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="169.06" y="0" width="99.5" height="8" fill="#AA6746" />
       
-        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="267.33" y="0" width="48.81" height="8" fill="#f34b7d" />
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="268.56" y="0" width="47.98" height="8" fill="#f34b7d" />
       
-        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="316.14" y="0" width="23.86" height="8" fill="#e16737" />
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="316.54" y="0" width="23.46" height="8" fill="#e16737" />
       
       
     <g transform="translate(0, 25)">
@@ -109,28 +109,28 @@
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#3572A5" />
       <text data-testid="lang-name" x="15" y="10" class="lang-name">
-        Python 48.86%
+        Python 49.72%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
     <g class="stagger" style="animation-delay: 600ms">
       <circle cx="5" cy="6" r="5" fill="#AA6746" />
       <text data-testid="lang-name" x="15" y="10" class="lang-name">
-        Solidity 29.77%
+        Solidity 29.26%
       </text>
     </g>
   </g></g><g transform="translate(150, 0)"><g transform="translate(0, 0)">
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#f34b7d" />
       <text data-testid="lang-name" x="15" y="10" class="lang-name">
-        C++ 14.35%
+        C++ 14.11%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
     <g class="stagger" style="animation-delay: 600ms">
       <circle cx="5" cy="6" r="5" fill="#e16737" />
       <text data-testid="lang-name" x="15" y="10" class="lang-name">
-        MATLAB 7.02%
+        MATLAB 6.90%
       </text>
     </g>
   </g></g>
@@ -172,7 +172,7 @@
                 
                 <g transform="translate(83.333333333333, 45.5)">
                     <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#41b883" stroke="none" font-family="&quot;Segoe UI&quot;, Ubuntu, sans-serif" font-weight="700" font-size="28px" font-style="normal" style="opacity: 0; animation: fadein 0.5s linear forwards 0.6s">
-                        764
+                        770
                     </text>
                 </g>
 
@@ -201,7 +201,7 @@
                 
                 <g transform="translate(250, 142.5)">
                     <text x="0" y="21" stroke-width="0" text-anchor="middle" fill="#ffffff" stroke="none" font-family="&quot;Segoe UI&quot;, Ubuntu, sans-serif" font-weight="400" font-size="12px" font-style="normal" style="opacity: 0; animation: fadein 0.5s linear forwards 0.9s">
-                        Jul 21 - Aug 3
+                        Jul 21 - Aug 5
                     </text>
                 </g>
 
@@ -218,7 +218,7 @@
                 
                 <g transform="translate(250, 45.5)">
                     <text x="0" y="32" stroke-width="0" text-anchor="middle" fill="#41b883" stroke="none" font-family="&quot;Segoe UI&quot;, Ubuntu, sans-serif" font-weight="700" font-size="28px" font-style="normal" style="animation: currstreak 0.6s linear forwards">
-                        14
+                        16
                     </text>
                 </g>
 
