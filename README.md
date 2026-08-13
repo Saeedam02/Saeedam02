@@ -62,6 +62,6 @@ I work on **control theory and automated systems**, with a particular interest i
   <img
     src="./profile/github-overview.svg"
     width="920"
-    alt="Saeed's most used languages and GitHub contribution statistics"
+    alt="Saeed's GitHub overview"
   />
 </div>
