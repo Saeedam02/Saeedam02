@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" width="920" height="210" viewBox="0 0 920 210" role="img" aria-labelledby="overview-title overview-description"><title id="overview-title">Saeed's GitHub overview</title><desc id="overview-description">Most-used programming languages on the left and GitHub contribution streak statistics on the right.</desc><rect x="0" y="0" width="920" height="210" rx="8" ry="8" fill="#273849" /><line x1="410" y1="20" x2="410" y2="190" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="1" /><svg x="10" y="8" width="390" height="194" viewBox="0 0 390 140" preserveAspectRatio="xMidYMid meet" overflow="hidden" fill="none" role="img" aria-labelledby="descId"><title id="languages-titleId" />
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="210" viewBox="0 0 920 210" role="img"><title>Saeed's GitHub overview</title><rect x="0" y="0" width="920" height="210" rx="8" fill="#273849" /><line x1="410" y1="18" x2="410" y2="192" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="1" /><svg x="0" y="10" width="390" height="190" viewBox="0 0 390 140" preserveAspectRatio="xMidYMid meet"><title id="languages-titleId" />
         <desc id="languages-descId" />
         <style>
           .header {
@@ -139,43 +139,4 @@
     </svg>
   
         </g>
-      </svg><svg x="420" y="8" width="490" height="194" viewBox="0 0 500 190" preserveAspectRatio="xMidYMid meet" overflow="hidden" style="isolation: isolate"><style>
-            a {
-                fill: #ffffff;
-            }
-        </style>
-        <defs>
-            <clipPath id="streak-outer_rectangle">
-                <rect width="500" height="190" rx="4.5" />
-            </clipPath>
-            
-        </defs>
-        <g clip-path="url(#streak-outer_rectangle)">
-            <g style="isolation: isolate">
-                <rect stroke="#000000" stroke-opacity="0" fill="#000000" fill-opacity="0" rx="4.5" x="0.5" y="0.5" width="499" height="189" />
-            </g>
-            <g style="isolation: isolate">
-                
-                <g transform="translate(250, 105.5)">
-                    <text x="0" y="50" dy="0.25em" stroke-width="0" text-anchor="middle" fill="#41b883" stroke="none" font-family="&quot;Segoe UI&quot;, Ubuntu, sans-serif" font-weight="400" font-size="14px" font-style="normal">
-                        Failed to retrieve contributions. This is likely a GitHub API issue.
-                    </text>
-                </g>
-
-                
-                <defs>
-                    <mask id="streak-cut-off-area">
-                        <rect x="0" y="0" width="500" height="500" fill="white" />
-                        <ellipse cx="250" cy="31" rx="13" ry="18" />
-                    </mask>
-                </defs>
-                
-                <g transform="translate(250, -2.5)">
-                    <path fill="#41b883" d="M0,35.8c-25.2,0-45.7,20.5-45.7,45.7s20.5,45.8,45.7,45.8s45.7-20.5,45.7-45.7S25.2,35.8,0,35.8z M0,122.3c-11.2,0-21.4-4.5-28.8-11.9c-2.9-2.9-5.4-6.3-7.4-10c-3-5.7-4.6-12.1-4.6-18.9c0-22.5,18.3-40.8,40.8-40.8 c10.7,0,20.4,4.1,27.7,10.9c3.8,3.5,6.9,7.7,9.1,12.4c2.6,5.3,4,11.3,4,17.6C40.8,104.1,22.5,122.3,0,122.3z" />
-                    <path fill="#41b883" d="M4.8,93.8c5.4,1.1,10.3,4.2,13.7,8.6l3.9-3c-4.1-5.3-10-9-16.6-10.4c-10.6-2.2-21.7,1.9-28.3,10.4l3.9,3 C-13.1,95.3-3.9,91.9,4.8,93.8z" />
-                    <circle fill="#41b883" cx="-15" cy="71" r="4.9" />
-                    <circle fill="#41b883" cx="15" cy="71" r="4.9" />
-                </g>
-            </g>
-        </g>
-    </svg></svg>
+      </svg><text x="500" y="78" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#41B883">800</text><text x="500" y="108" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#41B883">Total Contributions</text><circle cx="665" cy="62" r="38" fill="none" stroke="#41B883" stroke-width="6" /><text x="665" y="73" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#41B883">24</text><text x="665" y="125" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#41B883">Current Streak</text><text x="665" y="150" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#FFFFFF">Jul 21, 2026 - Aug 13, 2026</text><text x="830" y="78" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#41B883">33</text><text x="830" y="108" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#41B883">Longest Streak</text><text x="830" y="140" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#FFFFFF"> - Dec 13, 2023</text></svg>
