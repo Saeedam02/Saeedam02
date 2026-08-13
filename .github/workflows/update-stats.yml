@@ -2,10 +2,10 @@ name: Update GitHub Overview Card
 
 on:
   schedule:
-    # Run automatically every day at 03:00 UTC
+    # Update every day at 03:00 UTC
     - cron: "0 3 * * *"
 
-  # Allow manual execution from the Actions tab
+  # Allow manual execution from GitHub Actions
   workflow_dispatch:
 
 permissions:
@@ -17,273 +17,886 @@ concurrency:
 
 jobs:
   generate-overview:
-    name: Generate Combined GitHub Overview
+    name: Generate GitHub Overview Card
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout profile repository
-        uses: actions/checkout@v6
 
-      - name: Create required directories
-        run: mkdir -p profile stats-source
+      # ---------------------------------------------------------
+      # 1. Checkout repository
+      # ---------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      # Generate the four most-used languages with a transparent background
-      - name: Generate top languages source card
+
+      # ---------------------------------------------------------
+      # 2. Create directories
+      # ---------------------------------------------------------
+      - name: Create directories
+        run: |
+          mkdir -p profile
+          mkdir -p stats-source
+
+
+      # ---------------------------------------------------------
+      # 3. Generate Top Languages card
+      #    Four languages only
+      # ---------------------------------------------------------
+      - name: Generate top languages card
         uses: stats-organization/github-readme-stats-action@v2
         with:
           card: top-langs
-          options: "username=${{ github.repository_owner }}&layout=compact&langs_count=4&card_width=390&hide_border=true&bg_color=00000000&title_color=41B883&text_color=FFFFFF"
+          options: "username=${{ github.repository_owner }}&theme=vue-dark&layout=compact&langs_count=4&card_width=390&hide_border=true&bg_color=00000000&title_color=41B883&text_color=FFFFFF"
           path: stats-source/top-langs.svg
           token: ${{ secrets.GITHUB_TOKEN }}
           fail_on_error: true
 
-      # Download the contribution-streak card with a transparent background
-      - name: Download contribution streak source card
-        shell: bash
-        run: |
-          curl \
-            --fail \
-            --silent \
-            --show-error \
-            --location \
-            --retry 3 \
-            --retry-all-errors \
-            --retry-delay 5 \
-            "https://streak-stats.demolab.com/?user=${GITHUB_REPOSITORY_OWNER}&theme=vue-dark&hide_border=true&background=00000000&card_width=500&card_height=190&ring=41B883&fire=41B883&currStreakNum=41B883&sideNums=41B883&currStreakLabel=41B883&sideLabels=41B883&dates=FFFFFF" \
-            --output stats-source/streak.svg
 
-      # Put both source cards inside one SVG container
-      - name: Build combined GitHub overview card
-        shell: bash
+      # ---------------------------------------------------------
+      # 4. Get GitHub contribution data
+      # ---------------------------------------------------------
+      - name: Fetch GitHub contribution data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: ${{ github.repository_owner }}
         run: |
+
           python3 <<'PY'
+
+          import json
+          import os
+          import urllib.request
+          from datetime import date, timedelta
+          from pathlib import Path
+
+
+          TOKEN = os.environ["GITHUB_TOKEN"]
+          USERNAME = os.environ["GITHUB_USERNAME"]
+
+          API_URL = "https://api.github.com/graphql"
+
+
+          # -----------------------------------------------------
+          # GraphQL query
+          # -----------------------------------------------------
+
+          QUERY = """
+          query($login: String!, $from: DateTime!, $to: DateTime!) {
+            user(login: $login) {
+              contributionsCollection(from: $from, to: $to) {
+                contributionCalendar {
+                  totalContributions
+                  weeks {
+                    contributionDays {
+                      date
+                      contributionCount
+                    }
+                  }
+                }
+              }
+            }
+          }
+          """
+
+
+          def github_graphql(from_date, to_date):
+
+              variables = {
+                  "login": USERNAME,
+                  "from": f"{from_date}T00:00:00Z",
+                  "to": f"{to_date}T23:59:59Z"
+              }
+
+              payload = json.dumps({
+                  "query": QUERY,
+                  "variables": variables
+              }).encode("utf-8")
+
+              request = urllib.request.Request(
+                  API_URL,
+                  data=payload,
+                  headers={
+                      "Authorization": f"bearer {TOKEN}",
+                      "Content-Type": "application/json",
+                      "User-Agent": "GitHub-Profile-Stats"
+                  },
+                  method="POST"
+              )
+
+              with urllib.request.urlopen(request) as response:
+                  result = json.loads(response.read().decode("utf-8"))
+
+              if "errors" in result:
+                  raise RuntimeError(
+                      "GitHub GraphQL API error:\n"
+                      + json.dumps(result["errors"], indent=2)
+                  )
+
+              return result["data"]["user"]["contributionsCollection"]
+
+
+          # -----------------------------------------------------
+          # Determine years to retrieve
+          #
+          # Your account started in 2022, so we retrieve
+          # contribution data from 2022 through the current year.
+          # -----------------------------------------------------
+
+          today = date.today()
+
+          first_year = 2022
+          last_year = today.year
+
+          all_days = []
+
+
+          # -----------------------------------------------------
+          # Retrieve every year separately.
+          #
+          # This avoids depending on the limitation of a single
+          # contribution-calendar request.
+          # -----------------------------------------------------
+
+          for year in range(first_year, last_year + 1):
+
+              start = date(year, 1, 1)
+
+              if year == today.year:
+                  end = today
+              else:
+                  end = date(year, 12, 31)
+
+              print(
+                  f"Fetching contributions for "
+                  f"{start} -> {end}"
+              )
+
+              collection = github_graphql(start, end)
+
+              calendar = collection["contributionCalendar"]
+
+              for week in calendar["weeks"]:
+                  for day_data in week["contributionDays"]:
+
+                      all_days.append({
+                          "date": day_data["date"],
+                          "count": day_data["contributionCount"]
+                      })
+
+
+          # -----------------------------------------------------
+          # Remove duplicate dates and sort chronologically
+          # -----------------------------------------------------
+
+          unique_days = {}
+
+          for item in all_days:
+              unique_days[item["date"]] = item["count"]
+
+
+          all_days = [
+              {
+                  "date": key,
+                  "count": value
+              }
+              for key, value in unique_days.items()
+          ]
+
+          all_days.sort(key=lambda x: x["date"])
+
+
+          # -----------------------------------------------------
+          # TOTAL CONTRIBUTIONS
+          # -----------------------------------------------------
+
+          total_contributions = sum(
+              item["count"]
+              for item in all_days
+          )
+
+
+          # -----------------------------------------------------
+          # LONGEST STREAK
+          #
+          # A streak means consecutive calendar days where
+          # contributionCount > 0.
+          # -----------------------------------------------------
+
+          longest_streak = 0
+          longest_start = None
+          longest_end = None
+
+          current_length = 0
+          current_start = None
+          previous_date = None
+
+
+          for item in all_days:
+
+              current_date = date.fromisoformat(item["date"])
+
+              if (
+                  item["count"] > 0
+                  and
+                  previous_date is not None
+                  and
+                  current_date == previous_date + timedelta(days=1)
+              ):
+
+                  current_length += 1
+
+              elif item["count"] > 0:
+
+                  current_length = 1
+                  current_start = current_date
+
+              else:
+
+                  current_length = 0
+                  current_start = None
+
+
+              if current_length > longest_streak:
+
+                  longest_streak = current_length
+                  longest_start = current_start
+                  longest_end = current_date
+
+
+              previous_date = current_date
+
+
+          # -----------------------------------------------------
+          # CURRENT STREAK
+          #
+          # If today has contributions, the streak ends today.
+          #
+          # If today has no contributions, we check yesterday.
+          # This matches the usual streak-card behavior.
+          # -----------------------------------------------------
+
+          day_lookup = {
+              date.fromisoformat(item["date"]): item["count"]
+              for item in all_days
+          }
+
+
+          if day_lookup.get(today, 0) > 0:
+
+              streak_end = today
+
+          else:
+
+              streak_end = today - timedelta(days=1)
+
+
+          current_streak = 0
+          current_streak_start = None
+
+
+          if day_lookup.get(streak_end, 0) > 0:
+
+              current_date = streak_end
+
+              while day_lookup.get(current_date, 0) > 0:
+
+                  current_streak += 1
+                  current_streak_start = current_date
+
+                  current_date -= timedelta(days=1)
+
+
+          # -----------------------------------------------------
+          # Format dates
+          # -----------------------------------------------------
+
+          def format_date(value):
+
+              if value is None:
+                  return ""
+
+              return value.strftime("%b %d, %Y")
+
+
+          current_start_text = format_date(
+              current_streak_start
+          )
+
+          current_end_text = format_date(
+              streak_end
+              if current_streak > 0
+              else None
+          )
+
+          longest_start_text = format_date(
+              longest_start
+          )
+
+          longest_end_text = format_date(
+              longest_end
+          )
+
+
+          # -----------------------------------------------------
+          # Save data for the SVG generator
+          # -----------------------------------------------------
+
+          stats = {
+
+              "username": USERNAME,
+
+              "total_contributions":
+                  total_contributions,
+
+              "current_streak":
+                  current_streak,
+
+              "current_streak_start":
+                  current_start_text,
+
+              "current_streak_end":
+                  current_end_text,
+
+              "longest_streak":
+                  longest_streak,
+
+              "longest_streak_start":
+                  longest_start_text,
+
+              "longest_streak_end":
+                  longest_end_text
+          }
+
+
+          Path("stats-source/contributions.json").write_text(
+              json.dumps(stats, indent=2),
+              encoding="utf-8"
+          )
+
+
+          print()
+          print("====================================")
+          print("GitHub Contribution Statistics")
+          print("====================================")
+          print(
+              "Total Contributions:",
+              total_contributions
+          )
+          print(
+              "Current Streak:",
+              current_streak
+          )
+          print(
+              "Longest Streak:",
+              longest_streak
+          )
+          print(
+              "Current Streak:",
+              current_start_text,
+              "-",
+              current_end_text
+          )
+          print(
+              "Longest Streak:",
+              longest_start_text,
+              "-",
+              longest_end_text
+          )
+          print("====================================")
+
+          PY
+
+
+      # ---------------------------------------------------------
+      # 5. Build ONE combined SVG card
+      # ---------------------------------------------------------
+      - name: Build combined GitHub overview card
+        run: |
+
+          python3 <<'PY'
+
+          import json
+          import html
+          import re
+
           from copy import deepcopy
           from pathlib import Path
+
           import xml.etree.ElementTree as ET
 
-          SVG_NAMESPACE = "http://www.w3.org/2000/svg"
-          ET.register_namespace("", SVG_NAMESPACE)
 
-          def svg_tag(name: str) -> str:
-              return f"{{{SVG_NAMESPACE}}}{name}"
+          SVG_NS = "http://www.w3.org/2000/svg"
 
-          def read_svg(path: str):
-              root = ET.parse(path).getroot()
+          ET.register_namespace("", SVG_NS)
 
-              view_box = root.get("viewBox")
-              if view_box:
-                  return root, view_box
 
-              width = root.get("width", "0").replace("px", "").strip()
-              height = root.get("height", "0").replace("px", "").strip()
+          def svg_tag(name):
+              return f"{{{SVG_NS}}}{name}"
 
-              return root, f"0 0 {width} {height}"
 
-          def prefix_element_ids(root, prefix: str) -> None:
-              """
-              Prevent ID conflicts between the two SVG source documents.
-              """
+          # -----------------------------------------------------
+          # Read contribution statistics
+          # -----------------------------------------------------
 
-              id_mapping = {}
+          with open(
+              "stats-source/contributions.json",
+              "r",
+              encoding="utf-8"
+          ) as file:
+
+              stats = json.load(file)
+
+
+          # -----------------------------------------------------
+          # Read Top Languages SVG
+          # -----------------------------------------------------
+
+          languages_tree = ET.parse(
+              "stats-source/top-langs.svg"
+          )
+
+          languages_root = languages_tree.getroot()
+
+
+          languages_viewbox = languages_root.get(
+              "viewBox",
+              "0 0 390 190"
+          )
+
+
+          # -----------------------------------------------------
+          # Prevent duplicate SVG IDs
+          # -----------------------------------------------------
+
+          def prefix_ids(root, prefix):
+
+              id_map = {}
 
               for element in root.iter():
+
                   old_id = element.get("id")
 
                   if old_id:
+
                       new_id = f"{prefix}-{old_id}"
-                      id_mapping[old_id] = new_id
-                      element.set("id", new_id)
+
+                      id_map[old_id] = new_id
+
+                      element.set(
+                          "id",
+                          new_id
+                      )
+
 
               for element in root.iter():
-                  for attribute, original_value in list(element.attrib.items()):
-                      updated_value = original_value
 
-                      for old_id, new_id in id_mapping.items():
-                          updated_value = updated_value.replace(
+                  for attribute, value in list(
+                      element.attrib.items()
+                  ):
+
+                      for old_id, new_id in id_map.items():
+
+                          value = value.replace(
                               f"url(#{old_id})",
                               f"url(#{new_id})"
                           )
 
-                          if updated_value == f"#{old_id}":
-                              updated_value = f"#{new_id}"
+                          if value == f"#{old_id}":
 
-                          updated_value = updated_value.replace(
-                              f"{old_id}.",
-                              f"{new_id}."
-                          )
+                              value = f"#{new_id}"
 
-                      element.set(attribute, updated_value)
+                      element.set(
+                          attribute,
+                          value
+                      )
 
-                  if element.tag == svg_tag("style") and element.text:
-                      updated_style = element.text
 
-                      for old_id, new_id in id_mapping.items():
-                          updated_style = updated_style.replace(
+                  if (
+                      element.tag == svg_tag("style")
+                      and element.text
+                  ):
+
+                      for old_id, new_id in id_map.items():
+
+                          element.text = element.text.replace(
                               f"#{old_id}",
                               f"#{new_id}"
                           )
 
-                      element.text = updated_style
 
-          def place_svg(
-              parent,
-              source_root,
-              source_view_box: str,
-              *,
-              x: int,
-              y: int,
-              width: int,
-              height: int
-          ) -> None:
-              nested_svg = ET.SubElement(
-                  parent,
-                  svg_tag("svg"),
-                  {
-                      "x": str(x),
-                      "y": str(y),
-                      "width": str(width),
-                      "height": str(height),
-                      "viewBox": source_view_box,
-                      "preserveAspectRatio": "xMidYMid meet",
-                      "overflow": "hidden",
-                  }
-              )
-
-              # Preserve useful attributes from the original SVG root
-              ignored_attributes = {
-                  "x",
-                  "y",
-                  "width",
-                  "height",
-                  "viewBox",
-                  "preserveAspectRatio",
-              }
-
-              for attribute, value in source_root.attrib.items():
-                  if attribute not in ignored_attributes:
-                      nested_svg.set(attribute, value)
-
-              for child in source_root:
-                  nested_svg.append(deepcopy(child))
-
-          languages_root, languages_view_box = read_svg(
-              "stats-source/top-langs.svg"
+          prefix_ids(
+              languages_root,
+              "languages"
           )
 
-          streak_root, streak_view_box = read_svg(
-              "stats-source/streak.svg"
-          )
 
-          prefix_element_ids(languages_root, "languages")
-          prefix_element_ids(streak_root, "streak")
+          # -----------------------------------------------------
+          # Card dimensions
+          # -----------------------------------------------------
 
-          card_width = 920
-          card_height = 210
+          CARD_WIDTH = 920
+          CARD_HEIGHT = 210
 
-          combined_svg = ET.Element(
+          LEFT_WIDTH = 390
+          RIGHT_X = 410
+
+
+          # -----------------------------------------------------
+          # Create main SVG
+          # -----------------------------------------------------
+
+          root = ET.Element(
               svg_tag("svg"),
               {
-                  "width": str(card_width),
-                  "height": str(card_height),
-                  "viewBox": f"0 0 {card_width} {card_height}",
-                  "role": "img",
-                  "aria-labelledby": "overview-title overview-description",
+                  "width": str(CARD_WIDTH),
+                  "height": str(CARD_HEIGHT),
+                  "viewBox":
+                      f"0 0 {CARD_WIDTH} {CARD_HEIGHT}",
+                  "role": "img"
               }
           )
 
+
+          # -----------------------------------------------------
+          # Accessible title
+          # -----------------------------------------------------
+
           title = ET.SubElement(
-              combined_svg,
-              svg_tag("title"),
-              {"id": "overview-title"}
-          )
-          title.text = "Saeed's GitHub overview"
-
-          description = ET.SubElement(
-              combined_svg,
-              svg_tag("desc"),
-              {"id": "overview-description"}
-          )
-          description.text = (
-              "Most-used programming languages on the left and "
-              "GitHub contribution streak statistics on the right."
+              root,
+              svg_tag("title")
           )
 
-          # One shared background
+          title.text = (
+              "Saeed's GitHub overview"
+          )
+
+
+          # -----------------------------------------------------
+          # Main background
+          # -----------------------------------------------------
+
           ET.SubElement(
-              combined_svg,
+              root,
               svg_tag("rect"),
               {
                   "x": "0",
                   "y": "0",
-                  "width": str(card_width),
-                  "height": str(card_height),
+                  "width": str(CARD_WIDTH),
+                  "height": str(CARD_HEIGHT),
                   "rx": "8",
-                  "ry": "8",
-                  "fill": "#273849",
+                  "fill": "#273849"
               }
           )
 
-          # Subtle separator between the two sections
+
+          # -----------------------------------------------------
+          # Vertical separator
+          # -----------------------------------------------------
+
           ET.SubElement(
-              combined_svg,
+              root,
               svg_tag("line"),
               {
-                  "x1": "410",
-                  "y1": "20",
-                  "x2": "410",
-                  "y2": "190",
+                  "x1": str(RIGHT_X),
+                  "y1": "18",
+                  "x2": str(RIGHT_X),
+                  "y2": "192",
                   "stroke": "#FFFFFF",
                   "stroke-opacity": "0.22",
-                  "stroke-width": "1",
+                  "stroke-width": "1"
               }
           )
 
-          # Left side: top four languages
-          place_svg(
-              combined_svg,
-              languages_root,
-              languages_view_box,
-              x=10,
-              y=8,
-              width=390,
-              height=194,
+
+          # -----------------------------------------------------
+          # Insert Top Languages card
+          # -----------------------------------------------------
+
+          nested_languages = ET.SubElement(
+              root,
+              svg_tag("svg"),
+              {
+                  "x": "0",
+                  "y": "10",
+                  "width": str(LEFT_WIDTH),
+                  "height": "190",
+                  "viewBox": languages_viewbox,
+                  "preserveAspectRatio":
+                      "xMidYMid meet"
+              }
           )
 
-          # Right side: contribution statistics
-          place_svg(
-              combined_svg,
-              streak_root,
-              streak_view_box,
-              x=420,
-              y=8,
-              width=490,
-              height=194,
+
+          for child in languages_root:
+
+              nested_languages.append(
+                  deepcopy(child)
+              )
+
+
+          # -----------------------------------------------------
+          # Colors
+          # -----------------------------------------------------
+
+          GREEN = "#41B883"
+          WHITE = "#FFFFFF"
+          MUTED = "#B8C7D1"
+
+
+          # -----------------------------------------------------
+          # RIGHT SIDE
+          # -----------------------------------------------------
+
+          # Center positions for the three statistics
+
+          col1 = 500
+          col2 = 665
+          col3 = 830
+
+
+          # -----------------------------------------------------
+          # Total Contributions
+          # -----------------------------------------------------
+
+          total_text = ET.SubElement(
+              root,
+              svg_tag("text"),
+              {
+                  "x": str(col1),
+                  "y": "78",
+                  "text-anchor": "middle",
+                  "font-family":
+                      "Arial, Helvetica, sans-serif",
+                  "font-size": "34",
+                  "font-weight": "700",
+                  "fill": GREEN
+              }
           )
 
-          output_path = Path("profile/github-overview.svg")
-          output_path.parent.mkdir(parents=True, exist_ok=True)
+          total_text.text = str(
+              stats["total_contributions"]
+          )
 
-          ET.ElementTree(combined_svg).write(
-              output_path,
+
+          total_label = ET.SubElement(
+              root,
+              svg_tag("text"),
+              {
+                  "x": str(col1),
+                  "y": "108",
+                  "text-anchor": "middle",
+                  "font-family":
+                      "Arial, Helvetica, sans-serif",
+                  "font-size": "14",
+                  "fill": GREEN
+              }
+          )
+
+          total_label.text = "Total Contributions"
+
+
+          # -----------------------------------------------------
+          # Current Streak
+          # -----------------------------------------------------
+
+          current = stats["current_streak"]
+
+
+          # Ring
+
+          ET.SubElement(
+              root,
+              svg_tag("circle"),
+              {
+                  "cx": str(col2),
+                  "cy": "62",
+                  "r": "38",
+                  "fill": "none",
+                  "stroke": GREEN,
+                  "stroke-width": "6"
+              }
+          )
+
+
+          current_text = ET.SubElement(
+              root,
+              svg_tag("text"),
+              {
+                  "x": str(col2),
+                  "y": "73",
+                  "text-anchor": "middle",
+                  "font-family":
+                      "Arial, Helvetica, sans-serif",
+                  "font-size": "30",
+                  "font-weight": "700",
+                  "fill": GREEN
+              }
+          )
+
+          current_text.text = str(current)
+
+
+          current_label = ET.SubElement(
+              root,
+              svg_tag("text"),
+              {
+                  "x": str(col2),
+                  "y": "125",
+                  "text-anchor": "middle",
+                  "font-family":
+                      "Arial, Helvetica, sans-serif",
+                  "font-size": "14",
+                  "font-weight": "700",
+                  "fill": GREEN
+              }
+          )
+
+          current_label.text = "Current Streak"
+
+
+          # Current streak dates
+
+          current_dates = ET.SubElement(
+              root,
+              svg_tag("text"),
+              {
+                  "x": str(col2),
+                  "y": "150",
+                  "text-anchor": "middle",
+                  "font-family":
+                      "Arial, Helvetica, sans-serif",
+                  "font-size": "11",
+                  "fill": WHITE
+              }
+          )
+
+          if current > 0:
+
+              current_dates.text = (
+                  f"{stats['current_streak_start']} - "
+                  f"{stats['current_streak_end']}"
+              )
+
+          else:
+
+              current_dates.text = "No active streak"
+
+
+          # -----------------------------------------------------
+          # Longest Streak
+          # -----------------------------------------------------
+
+          longest_text = ET.SubElement(
+              root,
+              svg_tag("text"),
+              {
+                  "x": str(col3),
+                  "y": "78",
+                  "text-anchor": "middle",
+                  "font-family":
+                      "Arial, Helvetica, sans-serif",
+                  "font-size": "34",
+                  "font-weight": "700",
+                  "fill": GREEN
+              }
+          )
+
+          longest_text.text = str(
+              stats["longest_streak"]
+          )
+
+
+          longest_label = ET.SubElement(
+              root,
+              svg_tag("text"),
+              {
+                  "x": str(col3),
+                  "y": "108",
+                  "text-anchor": "middle",
+                  "font-family":
+                      "Arial, Helvetica, sans-serif",
+                  "font-size": "14",
+                  "fill": GREEN
+              }
+          )
+
+          longest_label.text = "Longest Streak"
+
+
+          # Longest streak dates
+
+          longest_dates = ET.SubElement(
+              root,
+              svg_tag("text"),
+              {
+                  "x": str(col3),
+                  "y": "140",
+                  "text-anchor": "middle",
+                  "font-family":
+                      "Arial, Helvetica, sans-serif",
+                  "font-size": "10",
+                  "fill": WHITE
+              }
+          )
+
+          longest_dates.text = (
+              f"{stats['longest_streak_start']} - "
+              f"{stats['longest_streak_end']}"
+          )
+
+
+          # -----------------------------------------------------
+          # Write final SVG
+          # -----------------------------------------------------
+
+          output = Path(
+              "profile/github-overview.svg"
+          )
+
+          output.parent.mkdir(
+              parents=True,
+              exist_ok=True
+          )
+
+
+          ET.ElementTree(root).write(
+              output,
               encoding="utf-8",
               xml_declaration=True
           )
 
-          print(f"Generated {output_path}")
+
+          print(
+              f"Generated: {output}"
+          )
+
           PY
 
+
+      # ---------------------------------------------------------
+      # 6. Commit generated card
+      # ---------------------------------------------------------
       - name: Commit updated overview card
         shell: bash
         run: |
-          git config user.name "github-actions[bot]"
+
+          git config user.name \
+            "github-actions[bot]"
+
           git config user.email \
             "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add profile/github-overview.svg
 
           if git diff --cached --quiet; then
+
             echo "No changes detected."
+
           else
-            git commit -m "Update combined GitHub overview card"
+
+            git commit \
+              -m "Update GitHub overview card"
+
             git push
+
           fi
