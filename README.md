@@ -24,7 +24,7 @@ I work on **control theory and automated systems**, with a particular interest i
 - 🎓 **MSc, Control Systems Engineering** — Amirkabir University of Technology
 - 🔭 Currently working on **autonomous vehicle control, MIMO systems, and automated/embedded control systems**
 - 🌱 Currently deepening my skills in **ML and Docker**
-- 💬 Ask me about **autonomous vehicles, MIMO control, MATLAB/Simulink, embedded C++**
+- 💬 Ask me about **autonomous vehicles, Control Algorithms, MATLAB/Simulink, embedded C++**
 - 🎯 Open to **PhD positions and research collaborations** in control systems and autonomous/automated vehicle systems
 
 ---
