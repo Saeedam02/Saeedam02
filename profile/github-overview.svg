@@ -95,13 +95,13 @@
           <rect x="0" y="0" width="340" height="8" fill="white" rx="5" />
         </mask>
         
-        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="0" y="0" width="213.08" height="8" fill="#3572A5" />
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="0" y="0" width="204.16" height="8" fill="#3572A5" />
       
-        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="213.08" y="0" width="75.9" height="8" fill="#AA6746" />
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="204.16" y="0" width="72.72" height="8" fill="#AA6746" />
       
-        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="288.98" y="0" width="36.6" height="8" fill="#f34b7d" />
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="276.88" y="0" width="35.07" height="8" fill="#f34b7d" />
       
-        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="325.58000000000004" y="0" width="14.42" height="8" fill="#e16737" />
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="311.95" y="0" width="28.05" height="8" fill="#e16737" />
       
       
     <g transform="translate(0, 25)">
@@ -109,28 +109,28 @@
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#3572A5" />
       <text data-testid="lang-name" x="15" y="10" class="lang-name">
-        Python 62.67%
+        Python 60.05%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
     <g class="stagger" style="animation-delay: 600ms">
       <circle cx="5" cy="6" r="5" fill="#AA6746" />
       <text data-testid="lang-name" x="15" y="10" class="lang-name">
-        Solidity 22.32%
+        Solidity 21.39%
       </text>
     </g>
   </g></g><g transform="translate(150, 0)"><g transform="translate(0, 0)">
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#f34b7d" />
       <text data-testid="lang-name" x="15" y="10" class="lang-name">
-        C++ 10.76%
+        C++ 10.31%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
     <g class="stagger" style="animation-delay: 600ms">
       <circle cx="5" cy="6" r="5" fill="#e16737" />
       <text data-testid="lang-name" x="15" y="10" class="lang-name">
-        MATLAB 4.24%
+        MATLAB 8.25%
       </text>
     </g>
   </g></g>
@@ -139,4 +139,4 @@
     </svg>
   
         </g>
-      </svg><text x="500" y="78" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#41B883">886</text><text x="500" y="108" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#41B883">Total Contributions</text><circle cx="665" cy="62" r="38" fill="none" stroke="#41B883" stroke-width="6" /><text x="665" y="73" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#41B883">35</text><text x="665" y="125" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#41B883">Current Streak</text><text x="665" y="150" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#FFFFFF">Jul 21, 2026 - Aug 24, 2026</text><text x="830" y="78" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#41B883">35</text><text x="830" y="108" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#41B883">Longest Streak</text><text x="830" y="140" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#FFFFFF"> - Aug 24, 2026</text></svg>
+      </svg><text x="500" y="78" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#41B883">893</text><text x="500" y="108" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#41B883">Total Contributions</text><circle cx="665" cy="62" r="38" fill="none" stroke="#41B883" stroke-width="6" /><text x="665" y="73" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#41B883">36</text><text x="665" y="125" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#41B883">Current Streak</text><text x="665" y="150" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#FFFFFF">Jul 21, 2026 - Aug 25, 2026</text><text x="830" y="78" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#41B883">36</text><text x="830" y="108" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#41B883">Longest Streak</text><text x="830" y="140" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#FFFFFF"> - Aug 25, 2026</text></svg>
