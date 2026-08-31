@@ -95,13 +95,13 @@
           <rect x="0" y="0" width="340" height="8" fill="white" rx="5" />
         </mask>
         
-        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="0" y="0" width="229.44" height="8" fill="#3572A5" />
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="0" y="0" width="217.88" height="8" fill="#3572A5" />
       
-        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="229.44" y="0" width="52.55" height="8" fill="#AA6746" />
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="217.88" y="0" width="58.05" height="8" fill="#AA6746" />
       
-        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="281.99" y="0" width="32.67" height="8" fill="#e16737" />
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="275.93" y="0" width="36.08" height="8" fill="#e16737" />
       
-        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="314.66" y="0" width="25.34" height="8" fill="#f34b7d" />
+        <rect mask="url(#languages-rect-mask)" data-testid="lang-progress" x="312.01" y="0" width="27.99" height="8" fill="#f34b7d" />
       
       
     <g transform="translate(0, 25)">
@@ -109,28 +109,28 @@
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#3572A5" />
       <text data-testid="lang-name" x="15" y="10" class="lang-name">
-        Python 67.48%
+        Python 64.08%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
     <g class="stagger" style="animation-delay: 600ms">
       <circle cx="5" cy="6" r="5" fill="#AA6746" />
       <text data-testid="lang-name" x="15" y="10" class="lang-name">
-        Solidity 15.46%
+        Solidity 17.07%
       </text>
     </g>
   </g></g><g transform="translate(150, 0)"><g transform="translate(0, 0)">
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#e16737" />
       <text data-testid="lang-name" x="15" y="10" class="lang-name">
-        MATLAB 9.61%
+        MATLAB 10.61%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
     <g class="stagger" style="animation-delay: 600ms">
       <circle cx="5" cy="6" r="5" fill="#f34b7d" />
       <text data-testid="lang-name" x="15" y="10" class="lang-name">
-        C++ 7.45%
+        C++ 8.23%
       </text>
     </g>
   </g></g>
